@@ -1,0 +1,100 @@
+{
+	"name":	"PostgreSQLLinux",
+	"repository.provider_syntax":	{
+		"name":	"PostgreSQLLinux",
+		"query_syntax":	{
+			"create_primary_key":	"ALTER TABLE ${QO}${TABLE_OWNER}${QC}.${QO}${TABLE_NAME}${QC} ADD PRIMARY KEY ( ${COLUMN_LIST} )",
+			"modify_column":	"ALTER TABLE ${QO}${TABLE_OWNER}${QC}.${QO}${TABLE_NAME}${QC} ALTER COLUMN ${QO}${COLUMN_NAME}${QC} SET DATA TYPE ${COLUMN_TYPE}",
+			"error_code_constraint_violation":	"23000,23502,23505",
+			"error_code_data_failure":	"22P02",
+			"bulk_update_syntax":	"FROM_AT_THE_END",
+			"csv_null_value":	"attNULL",
+			"load_data_exe_name":	"ybload.sh",
+			"load_data_exe_params":	"-h ${SERVER} -p ${PORT} -U ${USER_NAME} -w -d ${DATABASE} -c \"\"\"\\\\copy \\\"\"${TABLE_OWNER}\\\"\".\\\"\"${TABLE_NAME}\\\"\" from '${FILENAME}' WITH DELIMITER ',' CSV NULL 'attNULL' ESCAPE '\\\\'\"\"\"",
+			"bulk_delete_syntax":	"USING_CLAUSE",
+			"error_code_table_error":	"42P01,42804",
+			"bulk_ignore_binary":	false,
+			"csv_string_escape":	"\\",
+			"support_wchar":	false,
+			"char_length_in_bytes":	3,
+			"load_exe_network_error_codes":	"2",
+			"csv_escape_control_char":	false,
+			"create_temporary_table":	"CREATE UNLOGGED TABLE ${QO}${TABLE_OWNER}${QC}.${QO}${TABLE_NAME}${QC} ( ${COLUMN_LIST}, PRIMARY KEY (${PK_COLUMN_LIST}))",
+			"character_semantic":	"CHARS",
+			"truncate_too_long_data_in_columns":	true,
+			"load_exe_data_error_codes":	"1"
+		},
+		"data_type_mapping":	[{
+				"rep_type":	"kAR_DATA_TYPE_BOOL",
+				"provider_data_type":	"BOOL"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_BYTES",
+				"provider_data_type":	"VARCHAR"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_DATE",
+				"provider_data_type":	"DATE"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_TIME",
+				"provider_data_type":	"TIME"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_TIMESTAMP",
+				"provider_data_type":	"TIMESTAMP",
+				"has_scale_condition":	true,
+				"to_scale":	6
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_TIMESTAMP",
+				"provider_data_type":	"VARCHAR(37)",
+				"has_scale_condition":	true,
+				"from_scale":	7,
+				"to_scale":	12
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_I1",
+				"provider_data_type":	"SMALLINT"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_I2",
+				"provider_data_type":	"SMALLINT"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_I4",
+				"provider_data_type":	"INTEGER"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_I8",
+				"provider_data_type":	"BIGINT"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_NUMERIC",
+				"provider_data_type":	"DECIMAL(${PRECISION},${SCALE})"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_R4",
+				"provider_data_type":	"FLOAT4"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_R8",
+				"provider_data_type":	"FLOAT8"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_STR",
+				"provider_data_type":	"VARCHAR(${LENGTH})"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_UI1",
+				"provider_data_type":	"SMALLINT"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_UI2",
+				"provider_data_type":	"INTEGER"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_UI4",
+				"provider_data_type":	"BIGINT"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_UI8",
+				"provider_data_type":	"BIGINT"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_WSTR",
+				"provider_data_type":	"VARCHAR(${LENGTH})"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_BLOB",
+				"provider_data_type":	"VARCHAR"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_NCLOB",
+				"provider_data_type":	"VARCHAR(62000)"
+			}, {
+				"rep_type":	"kAR_DATA_TYPE_CLOB",
+				"provider_data_type":	"VARCHAR(62000)"
+			}]
+	}
+}
