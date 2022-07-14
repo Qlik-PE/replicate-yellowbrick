@@ -7,7 +7,7 @@ There are just a few steps:
 * Install the `ybload.bat` script in the Qlik Replicate `bin` directory. 
 * Upload a new provider syntax for PostgreSQL that addresses the differences that
 Yellowbrick has from vanilla PostgreSQL.
-* Configure your Yellowbrick target endpoint
+* Configure your Yellowbrick target endpoint.
 
 ## Install the Yellowbrick Tools Package
 
@@ -84,12 +84,12 @@ data to Yellowbrick.
 Unlike on Linux where we were required to physically replace the PostgreSQL provider syntax,
 on Windows we are able to install a separate provider syntax specific to Yellowbrick.
 In order to cause the target endpoint to use the new provider syntax, we need to set
-a Qlik Replicate *internal variable* to override the default provider syntax (*PostgreSQL*)
+a Qlik Replicate *internal parameter* to override the default provider syntax (*PostgreSQL*)
 with the provider syntax that is specific to Yellowbrick. You will do this by
 selecting the `Advanced` tab in the PostgreSQL target endpoint, then selecting 
 `Internal Parameters`, and finally entering a parameter `syntax` with the value `Yellowbrick`.
 
-![syntax-variable](../images/syntax-variable.png "Overriding the provider syntax")
+![syntax-parameter](../images/syntax-parameter.png "Overriding the provider syntax")
 
 > The value you enter is case sensitive. Note that the value above is `Yellowbrick` with a 
 > capital 'Y'.
