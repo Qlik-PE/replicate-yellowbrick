@@ -7,6 +7,7 @@ There are just a few steps:
 * Install the `ybload.sh` script in the Qlik Replicate `bin` directory. 
 * Upload a new provider syntax for PostgreSQL that addresses the differences that
 Yellowbrick has from vanilla PostgreSQL.
+* Configure your target endpoint.
 
 ## Install the Yellowbrick Tools Package
 
@@ -76,9 +77,20 @@ command getprovidersyntax response:
 			"bulk_update_syntax":	"FROM_AT_THE_END",
 			"csv_null_value":	"attNULL",
 			"load_data_exe_name":	"ybload.sh",
-        &hellip;
+       *** snip - lines deleted for brevity *** 
 }
 [getprovidersyntax command] Succeeded
 #> 
 ```
 
+## Configure Your Yellowbrick Target Endpoint
+
+Things are now ready for you to configure a PostgreSQL target endpoint that will deliver
+data to Yellowbrick. 
+
+As mentioned above, we had to physically replace the provider syntax for PostgreSQL
+on a Linux host, so there is
+nothing special we need to do to configure the target endpoint on Linux. Configure just as 
+you would any PostgreSQL target. In order for `ybload` to run, be sure that you are connecting 
+to the hostname or IP address of a Yellowbrick instance that supports high speed connectivity
+and has the requisite ports that `ybload` depends on open.

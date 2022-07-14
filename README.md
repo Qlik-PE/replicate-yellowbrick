@@ -43,7 +43,7 @@ Before:
 			"rep_type":	"kAR_DATA_TYPE_DATE",
 			"provider_data_type":	"DATE"
 		}, {
-<snip>
+			"comment":	"*** lines delete for brevity ***",
 		}, {
 			"rep_type":	"kAR_DATA_TYPE_WSTR",
 			"provider_data_type":	"VARCHAR(${LENGTH})"
@@ -72,7 +72,7 @@ After:
 			"rep_type":	"kAR_DATA_TYPE_DATE",
 			"provider_data_type":	"DATE"
 		}, {
-                &hellip;
+			"comment":	"*** lines delete for brevity ***",
 		}, {
 			"rep_type":	"kAR_DATA_TYPE_WSTR",
 			"provider_data_type":	"VARCHAR(${LENGTH})"
@@ -109,9 +109,9 @@ Before:
 
 ```json
 	"query_syntax":	{
-                &hellip;
+		"comment":	"*** lines delete for brevity ***",
 		"load_data_exe_name":	"psql",
-                &hellip;
+		"comment":	"*** lines delete for brevity ***",
 	},
 ```
 
@@ -119,9 +119,9 @@ After:
 
 ```json
 	"query_syntax":	{
-                &hellip;
-		"load_data_exe_name":	"psql",
-                &hellip;
+		"comment":	"*** lines delete for brevity ***",
+		"load_data_exe_name":	"ybload.sh",
+		"comment":	"*** lines delete for brevity ***",
 	},
 ```
 
