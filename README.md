@@ -1,8 +1,8 @@
 # Configuring Qlik Replicate for Delivery to Yellowbrick
 
-Qlik Replicate supports delivery to native delivery to PostgreSQL databases, including 
+Qlik Replicate supports native delivery to PostgreSQL-based databases, including 
 Yellowbrick. However, Yellowbrick has some minor differences from "vanilla" Postgres
-that we need to alter the default configuration for.
+that we need to account for in the configuration.
 
 ## Qlik Replicate Provider Syntax
 
@@ -13,7 +13,8 @@ certain actions, etc. A provider syntax can be used to define a target endpoint 
 databases that Replicate does not support directly. 
 
 However, due to the generic nature of these files, Qlik Replicate is unable to interact
-optimally with all databases. Some targets make use of a hybrid approach, where the provider
+optimally with all databases by relying solely on the provider syntax. 
+Some targets make use of a hybrid approach, where the provider
 syntax provide some information to Replicate, while other actions are implemented directly
 in the code. The PostgreSQL endpoint is an example of this hybrid approach. It is for this
 reason that we opted to use the PostgreSQL target rather than simply creating a provider
@@ -102,7 +103,7 @@ Our approach to overriding the default loader involves replacing `psql` in the
 provider syntax with a shell script that is invoked in its place. We needed to call a
 shell script rather than `ybload` directly because the hybrid approach taken by the
 PostgreSQL target endpoint doesn't allow us to override the command line arguments 
-that are passed via the command line. We rely on the shell script to parse the 
+that are passed to the executable. We rely on the shell script to parse the 
 command line it is passed and format as needed in order to call `ybload`.
 
 Before:
@@ -125,16 +126,22 @@ After:
 	},
 ```
 
+> If you look at the provider syntax files in this repository, you will see a JSON
+> key *load_data_exe_params*. While you would think that this would allow us to override
+> the command line arguments, that is not the case with the PostgreSQL target endpoint. 
+> It turns out that the command line arguments are formatted directly in the code and do
+> not rely on the value specified. This is why we must rely on a script to parse
+> the arguments and reformat them for `ybload`.
 
 
 ## Differences Between Windows and Linux Hosts
 
 While the approach taken for both Windows and Linux Qlik Replicate hosts is
 essentially the same, the shell scripts are obviously different (Windows batch 
-files vs. Linux bash scripts). There are some also some minor 
+files vs. Linux *bash* scripts). There are some also some minor 
 differences in behavior of the PostgreSQL target endpoint with regard to the provider
 syntax. The subdirectories in this repository provide details for both
-Windows and Linux hosts.
+Windows and Linux Qlik Replicate hosts.
 
 ## Best Practice Recommendations
 

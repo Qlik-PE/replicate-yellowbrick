@@ -1,6 +1,6 @@
 # Configuring a Replicate Linux Host 
 
-It is a straightforward process configure Qlik Replicate installed on a Linux host.
+It is a straightforward process to configure Qlik Replicate that is installed on a Linux host.
 There are just a few steps:
 
 * Install the Yellowbrick tools package.
